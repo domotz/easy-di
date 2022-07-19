@@ -2,8 +2,6 @@ import functools
 from importlib.abc import Loader
 
 from easy_di.injection import DiModuleInjector
-from easy_di.resource_locator import DI
-
 
 # Copied and modified from
 # https://github.com/brettlangdon/importhook   (MIT Licence)
@@ -68,7 +66,7 @@ class _InjectionPatchLoader(Loader):
         if module is None:
             return None
 
-        DiModuleInjector().inject(module, resource_locator=DI)
+        DiModuleInjector().inject(module)
 
         return module
 
@@ -80,7 +78,7 @@ class _InjectionPatchLoader(Loader):
         if mod is not None:
             module = mod
 
-        DiModuleInjector().inject(module, DI)
+        DiModuleInjector().inject(module)
 
         return module
 

@@ -2,9 +2,11 @@ __author__ = "Iacopo Papalini <iacopo@domotz.com>"
 
 from unittest import TestCase
 from unittest.mock import Mock
+
 from easy_di import DI, di_init
-from easy_di.exceptions import UndefinedResourceException, DuplicateResourceException
-from .resources import Object2, Object1, FakeInjectedClass, Object3
+from easy_di.exceptions import DuplicateResourceException, UndefinedResourceException
+
+from .resources import FakeInjectedClass, Object1, Object3
 
 
 class Object4(Object3):
@@ -49,7 +51,7 @@ class InjectionTest(TestCase):
             _ = testing.bar
 
     def test_parent_is_not_injected(self):
-        from .resources_2 import Parent, Child
+        from .resources_2 import Child, Parent
 
         p = Parent(1)
         self.assertIs(1, p.a)
@@ -62,7 +64,7 @@ class InjectionTest(TestCase):
         self.assertIsNot(Parent.__init__, Child.__init__)
 
     def test_parent_is_not_injected_2(self):
-        from .resources_2 import Parent2, Child2
+        from .resources_2 import Child2, Parent2
 
         p = Parent2()
         with self.assertRaises(AttributeError):
@@ -81,7 +83,7 @@ class InjectionTest(TestCase):
         self.assertIsNotNone(test.b)
 
     def test_parent_is_called(self):
-        from .resources_4 import GranChild, Child, Base
+        from .resources_4 import Base, Child, GranChild
 
         o = GranChild(1)
 

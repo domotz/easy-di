@@ -2,7 +2,6 @@ import sys
 
 from easy_di.injection import DiModuleInjector
 from easy_di.loaders_patching import InjectedMetaPaths
-from easy_di.resource_locator import DI
 
 
 class _StaticData:
@@ -31,7 +30,7 @@ def di_init():
     for module in sys.modules.values():
         loaded_modules.append(module)
     for module in loaded_modules:
-        injector.inject(module, DI)
+        injector.inject(module)
     _StaticData.initialized()
 
 

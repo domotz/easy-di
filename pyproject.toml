@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "easy-di"
+version = "1.0.0"
+description = "Easy to use Dependency Injection Framework"
+readme = "README.md"
+authors = [{ name = "Iacopo Papalini", email = "iacopo@domotz.com" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+keywords = ["dependency-injection", "inversion-of-control", "di"]
+dependencies = [
+]
+requires-python = ">=3.8"
+
+[project.optional-dependencies]
+dev = ["bandit", "black", "bumpver", "isort", "pytest"]
+
+[project.urls]
+Homepage = "https://github.com/domotz/easy-di"

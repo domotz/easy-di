@@ -1,10 +1,10 @@
 from unittest.mock import Mock
 
+from easy_di import di_storage
 from easy_di.exceptions import DuplicateResourceException, UndefinedResourceException
 
 
 class DI:
-    resources = {}
     _initialized = False
 
     @classmethod
@@ -15,16 +15,13 @@ class DI:
         :type resolver:  object|callable  If callable it will be called with no parameters and the returned value will
         be the injected object. Otherwise, the injected object will be 'resolver' itself.
         :type is_factory: boolean - if True, the resolver will be treated as if it were a callable object, even if it is
-        not (usable for injecting factories)
+        not (usable for injecting factories), and be called for every new instance
 
-        WARNING: if it's callable, the resolver will be called every time a new object is constructed - be careful with
-        expensive functions.
         :type force: bool overwrites previously registered resolvers, set to True only in test
         """
-        resource_name = str(resource_name)
-        if resource_name in cls.resources and not force:
+        if cls.exists(resource_name) and not force:
             raise DuplicateResourceException(resource_name)
-        cls.resources[resource_name] = resolver, is_factory
+        di_storage.store(resource_name, resolver, is_factory)
 
     @classmethod
     def register_mock(cls, resource_name) -> Mock:
@@ -39,20 +36,17 @@ class DI:
 
         Sometimes you need to use the DI like it was a Resource Locator and this method allows something likely"""
         try:
-            resolver, is_factory = cls.resources[str(resource_name)]
-        except KeyError as e:
+            key, is_factory_key = di_storage.keys(resource_name)
+            resolved = getattr(di_storage, key)
+        except AttributeError as e:
             if default is not None:
                 return default
             raise UndefinedResourceException(resource_name) from e
-        if is_factory:
-            return resolver()
-        else:
-            return resolver
+        if getattr(di_storage, is_factory_key):
+            resolved = resolved()
+        return resolved
 
     @classmethod
     def exists(cls, resource_name):
-        return str(resource_name) in cls.resources
-
-    @classmethod
-    def cleanup(cls):
-        cls.resources = {}
+        key, _ = di_storage.keys(resource_name)
+        return getattr(di_storage, key, None) is not None
