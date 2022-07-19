@@ -1,0 +1,15 @@
+#IntelliJIDEA
+.idea
+*.iml
+# MacOXS Finder
+.DS_Store
+# Python compiled files
+*.pyc
+# build directory
+build
+*.egg-info
+dist
+.coverage
+.domotz-python-versions
+env
+.pytest_cache
