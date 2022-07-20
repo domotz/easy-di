@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "easy-di"
-version = "1.0.0"
+version = "0.0.1"
 description = "Easy to use Dependency Injection Framework"
 readme = "README.md"
 authors = [{ name = "Iacopo Papalini", email = "iacopo@domotz.com" }]
@@ -24,3 +24,18 @@ dev = ["bandit", "black", "bumpver", "isort", "pytest"]
 
 [project.urls]
 Homepage = "https://github.com/domotz/easy-di"
+
+[tool.bumpver]
+current_version = "0.0.1"
+version_pattern = "MAJOR.MINOR.PATCH"
+commit_message = "bump version {old_version} -> {new_version}"
+commit = true
+tag = true
+push = true
+
+[tool.bumpver.file_patterns]
+"pyproject.toml" = [
+    'current_version = "{version}"', 'version = "{version}"'
+]
+
+"src/easy_di/__init__.py" = ["{version}"]
