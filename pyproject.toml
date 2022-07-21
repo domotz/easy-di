@@ -1,6 +1,6 @@
 [project]
 name = "easy-dependency-injection"
-version = "0.1.0"
+version = "0.2.0"
 description = "Easy to use Dependency Injection Library"
 authors = [{ name = "Iacopo Papalini", email = "iacopo@domotz.com" }]
 license = {text = "MIT\nCopyright Domotz Inc."}
@@ -28,7 +28,7 @@ dev = ["bandit", "black", "bumpver", "isort", "pytest"]
 
 
 [tool.bumpver]
-current_version = "0.1.0"
+current_version = "0.2.0"
 version_pattern = "MAJOR.MINOR.PATCH"
 commit_message = "bump version {old_version} -> {new_version}"
 commit = true
