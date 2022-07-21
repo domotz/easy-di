@@ -3,12 +3,9 @@ name = "easy-dependency-injection"
 version = "0.1.0"
 description = "Easy to use Dependency Injection Library"
 authors = [{ name = "Iacopo Papalini", email = "iacopo@domotz.com" }]
-license = "MIT"
+license = {text = "MIT\nCopyright Domotz Inc."}
 readme = "README.md"
-python = ">=3.8"
-homepage = "https://github.com/domotz/easy-di"
-repository = "https://github.com/domotz/easy-di"
-
+requires-python = ">=3.8"
 keywords = ["dependency-injection", "inversion-of-control", "di"]
 
 classifiers = [
@@ -17,6 +14,9 @@ classifiers = [
     "Programming Language :: Python :: 3",
 ]
 
+[project.urls]
+homepage = "https://github.com/domotz/easy-di"
+repository = "https://github.com/domotz/easy-di"
 
 [build-system]
 requires = ["setuptools>=61.0.0", "wheel"]
@@ -41,3 +41,4 @@ push = true
     '^version = "{version}"$'
 ]
 "src/easy_di/__init__.py" = ['^__version__ = "{version}"$']
+
