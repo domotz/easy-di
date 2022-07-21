@@ -10,7 +10,7 @@ and manage the complexity of your Python applications.
 Easy-DI is available on PyPI:
 
 ```console
-$ python -m pip install easy-di
+$ python -m pip install easy-dependency-injection
 ```
 
 Easy-DI officially supports Python 3.8+.

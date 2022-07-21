@@ -1,29 +1,31 @@
-[build-system]
-requires = ["setuptools>=61.0.0", "wheel"]
-build-backend = "setuptools.build_meta"
-
 [project]
 name = "easy-dependency-injection"
 version = "0.1.0"
-description = "Easy to use Dependency Injection Framework"
-readme = "README.md"
+description = "Easy to use Dependency Injection Library"
 authors = [{ name = "Iacopo Papalini", email = "iacopo@domotz.com" }]
-license = { file = "LICENSE" }
+license = "MIT"
+readme = "README.md"
+python = ">=3.8"
+homepage = "https://github.com/domotz/easy-di"
+repository = "https://github.com/domotz/easy-di"
+
+keywords = ["dependency-injection", "inversion-of-control", "di"]
+
 classifiers = [
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
 ]
-keywords = ["dependency-injection", "inversion-of-control", "di"]
-dependencies = [
-]
-requires-python = ">=3.8"
+
+
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
 
 [project.optional-dependencies]
 dev = ["bandit", "black", "bumpver", "isort", "pytest"]
 
-[project.urls]
-Homepage = "https://github.com/domotz/easy-di"
 
 [tool.bumpver]
 current_version = "0.1.0"
@@ -38,4 +40,4 @@ push = true
     '^current_version = "{version}"$',
     '^version = "{version}"$'
 ]
-"src//easy_di//__init__.py" = ['^__version__ = "{version}"$']
+"src/easy_di/__init__.py" = ['^__version__ = "{version}"$']
